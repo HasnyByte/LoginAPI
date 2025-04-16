@@ -2,8 +2,11 @@
 
 import { useEffect } from "react";
 import { gsap } from "gsap";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+    const router = useRouter();
+
     useEffect(() => {
         const digitHeight = document.querySelector(".num")?.clientHeight || 100;
         const tl = gsap.timeline();
@@ -24,21 +27,18 @@ export default function Home() {
         const digits = document.querySelectorAll(".digit");
 
         if (digits.length >= 3) {
-            // satuan (digit ke-3): 0 -> 9 -> 0
             tl.to(digits[2], {
                 y: -10 * digitHeight,
                 duration: 3,
                 ease: "power2.inOut"
             }, 1);
 
-            // puluhan (digit ke-2): 0 -> 9 -> 0
             tl.to(digits[1], {
                 y: -10 * digitHeight,
                 duration: 1.5,
                 ease: "power2.inOut"
             }, 3.5);
 
-            // ratusan (digit ke-1): 0 -> 1
             tl.to(digits[0], {
                 y: -1 * digitHeight,
                 duration: 1,
@@ -89,35 +89,21 @@ export default function Home() {
         tl.to(".loading-screen", {
             opacity: 0,
             duration: 0.5,
-            ease: "power1.inOut"
+            ease: "power1.inOut",
+            onComplete: () => {
+                router.push("/home"); // ✅ langsung redirect saat animasi selesai
+            }
         }, 7.5);
 
-        tl.to("h1", {
-            y: -80,
-            duration: 1.5,
-            ease: "power4.inOut",
-            stagger: {
-                amount: 0.1
-            }
-        }, 7);
+        // Tidak perlu munculkan .website-content karena tidak ditampilkan
 
     }, []);
 
     return (
         <>
-            <div className="website-content absolute w-full h-full top-0 left-0 flex justify-center items-center">
-                <div className="header relative w-max h-max">
-                    <div className="h1 flex">
-                        <h1 className="relative top-20 mx-[10px] text-center uppercase font-normal text-[5rem]">Website</h1>
-                        <h1 className="relative top-20 mx-[10px] text-center uppercase font-normal text-[5rem]">Content</h1>
-                    </div>
-                    <div className="header-revealer absolute top-0 w-full h-full after:content-[''] after:absolute after:top-0 after:left-0  after:bg-white md:after:top-[80px] ">
-                    </div>
-                </div>
-            </div>
-
-            <div className="loading-screen fixed top-0 left-0 w-full h-full bg-black text-white pointer-events-none">
-                <div className="loader absolute top-[50%] left-[50%] w-[300px] h-[50px] flex transform -translate-x-1/2 -translate-y-1/2 bg-[rgb(80,80,80)]">
+            {/* Preloader only */}
+            <div className="loading-screen fixed top-0 left-0 w-full h-full bg-blue-500 text-white pointer-events-none z-50">
+                <div className="loader absolute top-[50%] left-[50%] w-[300px] h-[50px] flex transform -translate-x-1/2 -translate-y-1/2 bg-gray-400">
                     <div className="loader-1 relative bg-white w-[200px]">
                         <div className="bar h-[50px]"></div>
                     </div>
@@ -131,7 +117,7 @@ export default function Home() {
                     <div className="relative top-[-15px]">
                         <div className="digit">
                             <div className="num">0</div>
-                            <div className="num num1offset1 relative right-[-10px] ">1</div>
+                            <div className="num num1offset1 relative right-[-15px] ">1</div>
                         </div>
                     </div>
                     <div className="relative top-[-15px]">
