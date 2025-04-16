@@ -160,14 +160,16 @@ export default function Register() {
 
     return (
         <>
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black to-green-900">
-                <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-2xl w-full max-w-md text-white border border-white/20">
-                    <h2 className="text-3xl font-bold mb-6 text-center">Create an Account</h2>
+            <div className="min-h-screen flex items-center justify-center bg-white">
+                <div className="bg-white border border-gray-200 p-8 rounded-2xl shadow-2xl w-full max-w-md">
+                    <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-blue-500 to-blue-800 bg-clip-text text-transparent">
+                        Create an Account
+                    </h2>
 
                     <input
                         type="text"
                         placeholder="Full Name"
-                        className="bg-white/30 text-black placeholder-black/70 w-full py-2 px-4 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-green-500 backdrop-blur-md"
+                        className="bg-gray-100 text-gray-800 placeholder-gray-500 w-full py-2 px-4 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
                     />
@@ -175,7 +177,7 @@ export default function Register() {
                     <input
                         type="email"
                         placeholder="Email"
-                        className="bg-white/30 text-black placeholder-black/70 w-full py-2 px-4 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-green-500 backdrop-blur-md"
+                        className="bg-gray-100 text-gray-800 placeholder-gray-500 w-full py-2 px-4 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -183,7 +185,7 @@ export default function Register() {
                     <input
                         type="password"
                         placeholder="Password"
-                        className="bg-white/30 text-black placeholder-black/70 w-full py-2 px-4 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-green-500 backdrop-blur-md"
+                        className="bg-gray-100 text-gray-800 placeholder-gray-500 w-full py-2 px-4 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
@@ -191,22 +193,22 @@ export default function Register() {
                     <input
                         type="password"
                         placeholder="Confirm Password"
-                        className="bg-white/30 text-black placeholder-black/70 w-full py-2 px-4 rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-green-500 backdrop-blur-md"
+                        className="bg-gray-100 text-gray-800 placeholder-gray-500 w-full py-2 px-4 rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />
 
                     <button
                         onClick={onRegister}
-                        className="bg-green-500 hover:bg-green-600 text-white w-full py-2 rounded-lg font-semibold transition"
+                        className="bg-blue-600 hover:bg-blue-700 text-white w-full py-2 rounded-lg font-semibold transition"
                         disabled={isLoading}
                     >
                         {isLoading ? "Registering..." : "Create Account"}
                     </button>
 
-                    <p className="text-sm text-gray-200 mt-4 text-center">
+                    <p className="text-sm text-gray-600 mt-4 text-center">
                         Already have an account?{" "}
-                        <Link href="/auth/login" className="text-green-400 hover:underline">
+                        <Link href="/auth/login" className="text-blue-600 hover:underline">
                             Login here
                         </Link>
                     </p>
