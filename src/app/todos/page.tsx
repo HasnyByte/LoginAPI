@@ -300,7 +300,7 @@ const Todos = () => {
     return (
         <div className="min-h-screen bg-background p-4">
             <nav className="fixed w-full top-0 left-0 z-50 border-b bg-white/90 backdrop-blur">
-                <div className="container flex h-16 items-center justify-between px-4">
+                <div className="container mx-auto flex h-16 items-center justify-between px-4">
                     <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-blue-800 bg-clip-text text-transparent">Livere</h1>
                     <div className="relative">
                         <button
