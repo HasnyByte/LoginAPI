@@ -95,7 +95,6 @@ export default function Home() {
             }
         }, 7.5);
 
-        // Tidak perlu munculkan .website-content karena tidak ditampilkan
 
     }, []);
 
